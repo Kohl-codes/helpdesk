@@ -4,24 +4,22 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateEquipmentTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('equipment', function (Blueprint $table) {
             $table->id();
+            $table->string('serial_number')->unique();
+            $table->string('type'); // Type of equipment (e.g., laptop, desktop)
+            $table->string('make'); // Manufacturer or brand
+            $table->boolean('licensed')->default(true); // Whether software is under valid license
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('equipment');
     }
-};
+}
