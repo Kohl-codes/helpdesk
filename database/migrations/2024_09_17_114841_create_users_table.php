@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
             $table->string('job_title');
             $table->string('department');
             $table->enum('role', ['employee', 'helpdesk_operator', 'specialist'])->default('employee');
+            $table->rememberToken(); 
             $table->timestamps();
         });
     }
