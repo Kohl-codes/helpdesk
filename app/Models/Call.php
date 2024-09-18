@@ -28,4 +28,16 @@ class Call extends Model
     {
         return $this->belongsTo(Equipment::class);
     }
+
+    // A call can have multiple problems
+    public function problems()
+    {
+        return $this->hasMany(Problem::class);
+    }
+
+    // A call can have one resolution
+    public function resolution()
+    {
+        return $this->hasOne(Resolution::class);
+    }
 }

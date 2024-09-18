@@ -16,4 +16,10 @@ class Specialist extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // A specialist can handle multiple problems
+    public function problems()
+    {
+        return $this->hasMany(Problem::class);
+    }
 }
